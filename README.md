@@ -1,7 +1,7 @@
 # api-tarefas
 
 
-API REST de gerenciamento de tarefasconstrída com Node.js e Express.
+API REST de gerenciamento de tarefas construída com Node.js e Express.
 
 ## Tecnologias 
 
