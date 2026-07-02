@@ -1,6 +1,6 @@
 # api-tarefas
 
-API REST de gerenciamento de tarefas com autenticação JWT, construída com Node.js e Express.
+API REST de gerenciamento de tarefas com autenticação JWT e banco de dados PostgreSQL, construída com Node.js e Express.
 
 ## Tecnologias
 
@@ -8,16 +8,24 @@ API REST de gerenciamento de tarefas com autenticação JWT, construída com Nod
 - Express
 - JSON Web Token (JWT)
 - bcryptjs
+- Prisma ORM
+- PostgreSQL
 - Nodemon
 
 ## Como rodar
 
-```bash
 git clone https://github.com/Karllyson-Paula/api-tarefas.git
 cd api-tarefas
 npm install
+
+Configure o `.env` com sua conexão do PostgreSQL:
+
+DATABASE_URL="postgresql://postgres:SUA_SENHA@localhost:5432/api_tarefas?schema=public"
+
+Rode as migrações e inicie o servidor:
+
+npx prisma migrate dev
 npm run dev
-```
 
 ## Autenticação
 
@@ -25,8 +33,7 @@ A API usa JWT. Para acessar as rotas protegidas:
 
 1. Cadastre um usuário em `POST /auth/cadastro`
 2. Faça login em `POST /auth/login` e copie o token
-3. Adicione no header de cada requisição:
-   `Authorization: Bearer SEU_TOKEN`
+3. Adicione no header de cada requisição: `Authorization: Bearer SEU_TOKEN`
 
 ## Endpoints
 
@@ -39,7 +46,7 @@ A API usa JWT. Para acessar as rotas protegidas:
 ### Protegidos (requer token)
 | Método | Rota | Descrição |
 |--------|------|-----------|
-| GET | /tarefas | Lista todas as tarefas |
+| GET | /tarefas | Lista tarefas do usuário logado |
 | GET | /tarefas/:id | Busca tarefa por ID |
 | POST | /tarefas | Cria nova tarefa |
 | PUT | /tarefas/:id | Atualiza uma tarefa |
@@ -47,17 +54,18 @@ A API usa JWT. Para acessar as rotas protegidas:
 
 ## Estrutura
 
-```
 api-tarefas/
   controllers/
-    authController.js    ← lógica de autenticação
-    tarefasController.js ← lógica das tarefas
+    authController.js    ← autenticação
+    tarefasController.js ← CRUD de tarefas
   middlewares/
-    autenticar.js        ← verificação do token JWT
+    autenticar.js        ← verificação JWT
     logger.js            ← log de requisições
     erros.js             ← tratamento de erros
+  prisma/
+    schema.prisma        ← modelos do banco
+    client.js            ← instância do Prisma
   routes/
     auth.js              ← rotas públicas
     tarefas.js           ← rotas protegidas
   index.js               ← servidor
-```
