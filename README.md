@@ -10,6 +10,7 @@ API REST de gerenciamento de tarefas com autenticação JWT e banco de dados Pos
 - bcryptjs
 - Prisma ORM
 - PostgreSQL
+- Jest + Supertest
 - Nodemon
 
 ## Como rodar
@@ -26,6 +27,12 @@ Rode as migrações e inicie o servidor:
 
 npx prisma migrate dev
 npm run dev
+
+## Testes
+
+npm test
+
+Cobertura atual: 10 testes de integração cobrindo autenticação e CRUD de tarefas.
 
 ## Autenticação
 
@@ -69,5 +76,9 @@ api-tarefas/
   routes/
     auth.js              ← rotas públicas
     tarefas.js           ← rotas protegidas
-  index.js               ← servidor
-  ```
+  tests/
+    auth.test.js         ← testes de autenticação
+    tarefas.test.js      ← testes de tarefas
+  index.js               ← app Express
+  server.js              ← entrada do servidor
+```
