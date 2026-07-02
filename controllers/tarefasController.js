@@ -54,7 +54,7 @@ const atualizar = async (req, res) => {
         const { titulo, concluida } = req.body
 
         const tarefaAtualizada = await prisma.tarefa.update({
-            where: id,
+            where: { id },
             data: {
                 ...(titulo && {titulo}),
                 ...(concluida !== undefined && {concluida})
