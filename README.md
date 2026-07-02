@@ -54,7 +54,7 @@ A API usa JWT. Para acessar as rotas protegidas:
 
 ## Estrutura
 
-`
+```
 api-tarefas/
   controllers/
     authController.js    ← autenticação
@@ -70,4 +70,4 @@ api-tarefas/
     auth.js              ← rotas públicas
     tarefas.js           ← rotas protegidas
   index.js               ← servidor
-  ``
+  ```
