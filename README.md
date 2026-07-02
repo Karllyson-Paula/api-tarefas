@@ -2,6 +2,10 @@
 
 API REST de gerenciamento de tarefas com autenticação JWT e banco de dados PostgreSQL, construída com Node.js e Express.
 
+## URL de produção
+
+https://api-tarefas-production-afa5.up.railway.app
+
 ## Tecnologias
 
 - Node.js
