@@ -2,9 +2,14 @@
 
 API REST de gerenciamento de tarefas com autenticação JWT e banco de dados PostgreSQL, construída com Node.js e Express.
 
-## URL de produção
+## 🚀 URL de produção
 
 https://api-tarefas-production-afa5.up.railway.app
+
+## 🖥️ Frontend
+
+Interface web consumindo esta API:
+https://github.com/Karllyson-Paula/frontend-tarefas
 
 ## Tecnologias
 
@@ -67,22 +72,26 @@ A API usa JWT. Para acessar as rotas protegidas:
 
 ```
 api-tarefas/
-  controllers/
-    authController.js    ← autenticação
-    tarefasController.js ← CRUD de tarefas
-  middlewares/
-    autenticar.js        ← verificação JWT
-    logger.js            ← log de requisições
-    erros.js             ← tratamento de erros
-  prisma/
-    schema.prisma        ← modelos do banco
-    client.js            ← instância do Prisma
-  routes/
-    auth.js              ← rotas públicas
-    tarefas.js           ← rotas protegidas
-  tests/
-    auth.test.js         ← testes de autenticação
-    tarefas.test.js      ← testes de tarefas
-  index.js               ← app Express
-  server.js              ← entrada do servidor
+controllers/
+authController.js    ← autenticação
+tarefasController.js ← CRUD de tarefas
+middlewares/
+autenticar.js        ← verificação JWT
+logger.js            ← log de requisições
+erros.js             ← tratamento de erros
+prisma/
+schema.prisma        ← modelos do banco
+client.js            ← instância do Prisma
+routes/
+auth.js              ← rotas públicas
+tarefas.js           ← rotas protegidas
+tests/
+auth.test.js         ← testes de autenticação
+tarefas.test.js      ← testes de tarefas
+index.js               ← app Express
+server.js              ← entrada do servidor
 ```
+
+## Autor
+
+Karllyson Eduardo — [@Karllyson-Paula](https://github.com/Karllyson-Paula)
