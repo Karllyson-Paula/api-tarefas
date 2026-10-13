@@ -19,6 +19,10 @@ app.use(cors({
 app.use(express.json())
 app.use(logger)
 
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' })
+})
+
 app.use('/auth', authRouter)
 app.use('/tarefas', tarefasRouter)
 

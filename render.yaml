@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: api-tarefas
+    runtime: node
+    plan: free
+    region: virginia
+    buildCommand: npm install && npx prisma generate && npx prisma migrate deploy
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Connection string direta do Neon (sem "-pooler" no host).
+      # O Render pede o valor no painel ao criar o Blueprint.
+      - key: DATABASE_URL
+        sync: false
+      # Gerado automaticamente pelo Render (valor aleatório de 256 bits).
+      - key: JWT_SECRET
+        generateValue: true

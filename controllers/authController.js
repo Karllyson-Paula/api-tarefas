@@ -2,7 +2,15 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const prisma = require('../prisma/client')
 
-const SEGREDO = 'minha-chave-secreta-dev'
+// Em produção o segredo vem obrigatoriamente do ambiente (JWT_SECRET).
+// O valor de desenvolvimento só vale fora de produção (ex.: testes locais).
+const SEGREDO =
+  process.env.JWT_SECRET ||
+  (process.env.NODE_ENV === 'production' ? null : 'minha-chave-secreta-dev')
+
+if (!SEGREDO) {
+  throw new Error('JWT_SECRET não definido: configure a variável de ambiente em produção')
+}
 
 const cadastrar = async (req, res) => {
   const { nome, email, senha } = req.body
